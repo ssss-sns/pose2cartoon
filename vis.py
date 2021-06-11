@@ -11,7 +11,7 @@ import cv2
 import open3d as o3d 
 from tqdm import tqdm
 
-use_online_model = False
+use_online_model = True
 if not use_online_model and int(o3d.__version__.split('.')[1]) < 11:
     warnings.warn('You are using open3d below 0.11.0, which may cause black images in saving screen captures' + \
                      'you can use a video recorder to save the visualization, or switch to a newer version')
@@ -25,7 +25,7 @@ elif use_online_model:
 savedir = "vis/"
 os.makedirs(savedir, exist_ok=True)
 save_video_path = osp.join(savedir, "vis.mp4")
-human_obj_dir = "./obj_seq_5"
+human_obj_dir = "D:/MAYA/project/obj_seq_5"
 
 visualizer = o3d.visualization.Visualizer()
 visualizer.create_window('open3d')
@@ -100,5 +100,4 @@ for idx in tbar:
 visualizer.run()
 visualizer.destroy_window()
 compose_video()
-
 
