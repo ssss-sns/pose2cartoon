@@ -17,8 +17,8 @@ from tqdm import tqdm
 
 
 # ***** 需要你补充的变量) ******
-manual_model_to_smpl = {}
-#(e.g.) manual_model_to_smpl = {0: 0, 1: 3, 2: 2, 3: 1, 4: 6, 5: 5, 6: 4, 7: 9, 8: 8, 9: 7, 10: 12, 11: 14, 12: 13, 21: 19, 22: 18, 23: 21, 24: 20, 16: 17, 17: 16}
+manual_model_to_smpl = {0:0, 1:3, 2:2, 3:1, 4:16, 5:12, 6:17, 7:5, 8:4, 9:18, 10:19, 11:8, 12:7, 13:20, 14:21}                                                        
+#(e.g.) manual_model_to_smpl = {0: 0, 1: 3, 2: 2, 3: 1, 4: 6, 5: 5, 6: 4, 7: 9, 8: 8, 9: 7, 10: 12, 11: 14, 12: 13, 21: 20, 22: 18, 23: 21, 24: 20, 16: 17, 17: 16}
 
 smpl_joint_names = [
     "hips", 
@@ -152,10 +152,11 @@ def transfer_given_pose(human_pose, infoname, is_root_rotated=False):
     finally use blending weights to obtain posed mesh
     """
     lines = open(infoname).readlines()
-    meshname = infoname.replace(".txt", ".obj")
+    meshname = infoname.replace(".txt", ".obj")    
     inmesh = o3d.io.read_triangle_mesh(meshname)
     v_posed = np.array(inmesh.vertices)
-
+    print(lines)
+   
     hier = {}
     joint2index = {}
     index = 0
@@ -335,13 +336,14 @@ def transfer_given_pose(human_pose, infoname, is_root_rotated=False):
     return outinfo, outmesh
 
 def transfer_one_frame(infofile, use_online_model=False): 
-    """
-    transfer human pose in one frame to 3D character
-    infofile: riginfo file for one specific character model
-    """
+
+    
+    #transfer human pose in one frame to 3D character
+    #infofile: riginfo file for one specific character model
+    
     np.random.seed(2021)
     # randomly sample one frame and obtain its pose
-    with open("./pose_sample.pkl", "rb") as f: 
+    with open("D:/MAYA/pose2carton-main/pose_sample.pkl", "rb") as f: 
         # poses shape: (N, 24, 3)
         poses = pkl.load(f)
     random_index = np.random.randint(0, len(poses))
@@ -370,6 +372,7 @@ def transfer_one_frame(infofile, use_online_model=False):
                     fp.write('f %d %d %d\n' % (f[0], f[1], f[2]))
         print('transferred finished, save to {} and {} with reference to human pose {}.obj'.format(out_infofile, out_objfile, random_index))
 
+    
 def transfer_one_sequence(infofile, seqfile, use_online_model=False): 
     """
     transfer one sequence of human poses to 3D characters
@@ -455,10 +458,10 @@ if __name__ == '__main__':
     #     transfer_one_frame(infofile)
 
     # for provided models
-    transfer_one_frame("fbx/10500.txt")
-    transfer_one_sequence("fbx/10500.txt", "info_seq_5.pkl")
+    #transfer_one_frame("D:/MAYA/pose2carton-main/fbx/3670.txt")
+    transfer_one_sequence("D:/MAYA/pose2carton-main/fbx/8304.txt", "D:/MAYA/pose2carton-main/info_seq_5.pkl")
 
     # for possible model downloaded online
-    # clean_info("samples/Ch14_nonPBR.txt")
-    # transfer_one_frame("samples/Ch14_nonPBR.txt", use_online_model=True)
-    # transfer_one_sequence("samples/Ch14_nonPBR.txt", "info_seq_5.pkl", use_online_model=True)
+    #clean_info("D:/MAYA/pose2carton-main/yaku_j_ignite.txt")
+    #transfer_one_frame("D:/MAYA/pose2carton-main/fbx/remy.txt", use_online_model=True)
+    #transfer_one_sequence("D:/MAYA/pose2carton-main/yaku_j_ignite.txt", "info_seq_5.pkl", use_online_model=True)
