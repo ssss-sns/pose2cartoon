@@ -25,8 +25,30 @@ EE228 课程大作业，利用3D骨架控制3D卡通人物。
 
 # 项目结果
 
+原图
+![200.obj](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/0.png)
+
+助教提供的模型
+
 ![10721](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/10721.png)
 
+![11779](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/11779.png)
+
+![12240](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/12240.png)
+
+![16732](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/16732.png)
+
+![17293](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/17293.png)
+
+![3670](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/3670.png)
+
+![7463](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/7463.png)
+
+![8172](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/8172.png)
+
+![8175](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/8175.png)
+
+![8304](https://github.com/ssss-sns/pose2cartoon/blob/main/pic/8304.png)
 
 
 
