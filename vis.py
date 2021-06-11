@@ -95,7 +95,7 @@ for idx in tbar:
     # visualizer.capture_screen_image(osp.join("vis", "{}.png".format(idx)), do_render=True)
     vis_save_path = osp.join(savedir, str(idx) + ".png")
     # img = np.asarray(visualizer.capture_screen_float_buffer()).copy()
-    visualizer.capture_screen_image(vis_save_path, True)
+    visualizer.capture_screen_image(vis_save_path)
 
 visualizer.run()
 visualizer.destroy_window()
